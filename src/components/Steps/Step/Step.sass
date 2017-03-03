@@ -1,0 +1,23 @@
+.step
+  background: #fff
+  opacity: 1
+  max-height: 1000px
+  transition: all .4s
+
+.stepLeaving1
+  composes: step
+  opacity: 0
+
+.step-leaving-2
+  composes: step
+  max-height: 0
+  opacity: 0
+
+.step-appearing-1
+  composes: step
+  opacity: 0
+  max-height: 0
+
+.step-appearing-2
+  composes: step
+  opacity: 0

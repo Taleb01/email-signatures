@@ -1,0 +1,33 @@
+@import "~public/stylesheets/vars";
+
+.text-input
+  width: 48%
+  display: inline-block
+  margin-bottom: 20px
+
+  &:nth-child(2n)
+    margin-right: 1.5%
+
+  &:nth-child(2n+1)
+    margin-left: 1.5%
+
+  label
+    display: block
+    margin-bottom: 5px
+
+  input 
+    background: $primary
+    width: 100%
+    border: 0
+    border-radius: 3px
+    padding: 10px
+    font-family: $font-family
+    font-weight: $font-weight
+    letter-spacing: $font-letter-spacing
+    font-size: 14px
+    color: transparentize($call-out, 0.4)
+    transition: all .5s
+
+    &:focus
+      outline: none !important
+      background-color: darken($primary, 2%)

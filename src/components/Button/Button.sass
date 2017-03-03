@@ -1,0 +1,26 @@
+@import "~public/stylesheets/vars";
+
+.btn
+  background: $call-out
+  border-radius: 4px
+  color: #fff
+  border: 3px solid $call-out
+  font-size: 14px
+  letter-spacing: 1.5px
+  text-transform: uppercase
+  padding: 10px 22px
+  cursor: pointer
+  transition: all .5s
+  margin-left: 10px
+
+  &:hover
+    background: lighten($call-out, 15%)
+
+.btn-inverted
+  composes: btn
+  background: #fff
+  color: $call-out
+
+  &:hover
+    background: #fff
+    border-color: lighten($call-out, 15%)
