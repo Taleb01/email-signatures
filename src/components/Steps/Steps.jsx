@@ -1,29 +1,40 @@
 import React from 'react';
 
-export default class Steps extends React.Component {
+class Steps extends React.Component {
   constructor(props) {
     super(props);
-    
+
     this.state = {
-      step: 1,
+      step: props.active,
       total: this.props.children.length,
     };
 
-    this.handlePrevStep = (() => {
-      if (this.state.step != 1) {
-        this.setState({
-          step: this.state.step - 1,
-        });
-      }
-    });
+    this.handlePrevStep = this.handlePrevStep.bind(this);
+    this.handleNextStep = this.handleNextStep.bind(this);
+  }
 
-    this.handleNextStep = (() => {
-      if (this.state.step != this.state.total) {
-        this.setState({
-          step: this.state.step + 1,
-        });
-      }
-    })
+  handlePrevStep() {
+    if (this.state.step !== 1) {
+      const step = this.state.step - 1;
+
+      this.props.onChange(this.state.step, step);
+
+      this.setState({
+        step,
+      });
+    }
+  }
+
+  handleNextStep() {
+    if (this.state.step !== this.state.total) {
+      const step = this.state.step + 1;
+
+      this.props.onChange(this.state.step, step);
+
+      this.setState({
+        step,
+      });
+    }
   }
 
   render() {
@@ -38,4 +49,17 @@ export default class Steps extends React.Component {
       </div>
     );
   }
+}
+
+Steps.propTypes = {
+  onChange: React.PropTypes.func,
+  active: React.PropTypes.number,
+  children: React.PropTypes.arrayOf(React.PropTypes.element).isRequired,
 };
+
+Steps.defaultProps = {
+  onChange: () => {},
+  active: 1,
+};
+
+export default Steps;

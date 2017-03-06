@@ -5,58 +5,67 @@ import styles from './Step.sass';
 
 const ANIMATION_DURATION = 700;
 
-export default class Step extends React.Component {
+class Step extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      modifier: ''
+      styleModifier: '',
     };
 
-    this.animateTransition = (style, time, callback) => {
-      this.setState({
-        modifier: style + '-1',
-      });
-
-      setTimeout(() => this.setState({
-        modifier: style + '-2'
-      }), time / 2);
-
-      setTimeout(() => callback(), time);
-    }
-
-    this.handlePrev = () => {
-      this.animateTransition('leaving', ANIMATION_DURATION, this.props.onPrevStep);
-    }
-
-    this.handleNext = () => {
-      this.animateTransition('leaving', ANIMATION_DURATION, this.props.onNextStep);
-    }
+    this.animateTransition = this.animateTransition.bind(this);
+    this.handlePrev = this.handlePrev.bind(this);
+    this.handleNext = this.handleNext.bind(this);
   }
 
   componentWillReceiveProps() {
     this.animateTransition('appearing', ANIMATION_DURATION, () => {
       this.setState({
-        modifier: ''
-      })
+        styleModifier: '',
+      });
     });
+  }
+
+  animateTransition(style, time, callback) {
+    this.setState({
+      styleModifier: `${style}-1`,
+    });
+
+    setTimeout(() => this.setState({
+      styleModifier: `${style}-2`,
+    }), time / 2);
+
+    setTimeout(() => callback(), time);
+  }
+  handlePrev() {
+    this.animateTransition('leaving', ANIMATION_DURATION, this.props.onPrevStep);
+  }
+
+  handleNext() {
+    this.animateTransition('leaving', ANIMATION_DURATION, this.props.onNextStep);
+
+    if (this.props.onSubmit) {
+      this.props.onSubmit({
+        name: 'lucho',
+      });
+    }
   }
 
   render() {
     const paragraph = this.props.text ?
-      <p dangerouslySetInnerHTML={{__html: this.props.text}}></p> : 
-      '';
+      <p dangerouslySetInnerHTML={{ __html: this.props.text }} /> :
+      null;
 
-    const prevButton = this.props.prevButton ? 
+    const prevButton = this.props.prevButton ?
       <Button theme="inverted" onClick={this.handlePrev}>{this.props.prevButton}</Button> :
-      '';
+      null;
 
     const nextButton = this.props.nextButton ?
-      <Button onClick={this.handleNext}>{this.props.nextButton}</Button> : 
-      '';
+      <Button onClick={this.handleNext}>{this.props.nextButton}</Button> :
+      null;
 
-    const styleName = this.state.modifier ? 
-      'step' + this.state.modifier[0].toUpperCase() + this.state.modifier.substring(1, this.state.length).replace('-', '') :
+    const styleName = this.state.styleModifier ?
+      `step${this.state.styleModifier[0].toUpperCase()}${this.state.styleModifier.substring(1, this.state.length).replace('-', '')}` :
       'step';
 
     return (
@@ -72,4 +81,25 @@ export default class Step extends React.Component {
       </div>
     );
   }
+}
+
+Step.propTypes = {
+  nextButton: React.PropTypes.string,
+  prevButton: React.PropTypes.string,
+  text: React.PropTypes.string,
+  onSubmit: React.PropTypes.func,
+  onPrevStep: React.PropTypes.func,
+  onNextStep: React.PropTypes.func,
+  children: React.PropTypes.arrayOf(React.PropTypes.element).isRequired,
 };
+
+Step.defaultProps = {
+  nextButton: '',
+  prevButton: '',
+  text: '',
+  onSubmit: () => {},
+  onPrevStep: () => {},
+  onNextStep: () => {},
+};
+
+export default Step;

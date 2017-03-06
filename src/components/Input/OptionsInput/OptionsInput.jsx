@@ -1,47 +1,94 @@
 import React from 'react';
 import Autocomplete from 'react-autocomplete';
-import { getUsers, matchStateToTerm, styles, fakeRequest } from './libs/util';
+import axios from 'axios';
+import styles from './OptionsInput.sass';
 
-export default class OptionsInput extends React.Component {
+class OptionsInput extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      url: props.url,
       value: '',
-      options: getUsers(),
-    }
+      options: [],
+    };
+
+    this.originalOptions = [];
+
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleInputSelect = this.handleInputSelect.bind(this);
+
+    this.matchOptionToTerm = props.matchOptionToTerm.bind(this);
+  }
+
+  componentDidMount() {
+    axios.get(this.state.url).then((response) => {
+      this.originalOptions = response.data;
+
+      this.setState({
+        options: response.data,
+      });
+    });
+  }
+
+  handleInputChange(event, value) {
+    const options = this.originalOptions.filter(option => this.matchOptionToTerm(option, value));
+
+    this.setState({
+      value,
+      options,
+    });
+
+    this.props.onChange(event);
+  }
+
+  handleInputSelect(value, item) {
+    this.setState({
+      value,
+      options: [item],
+    });
+
+    this.props.onChange({
+      target: {
+        name: this.props.name,
+        value,
+      },
+    });
   }
 
   render() {
-    let wrapperStyle = {
-      display: 'block'
+    const wrapperStyle = {
+      display: 'block',
     };
+
+    const renderItem = (item, isHighlighted) => (
+      <div
+        className={isHighlighted ? styles.highlightedItem : styles.item}
+        key={item.username}
+        id={item.username}
+      >{item.name}</div>
+    );
 
     return (
       <Autocomplete
-        inputProps={{name: "user"}}
-        ref="autocomplete"
-        value={this.state.value}
-        items={this.state.options}
-        getItemValue={(item) => item.name}
         wrapperStyle={wrapperStyle}
-        onSelect={(value, item) => {
-          this.setState({ value, options: [ item ] })
-        }}
-        onChange={(event, value) => {
-          this.setState({ value })
-          fakeRequest(value, (items) => {
-            this.setState({ options: items })
-          })
-        }}
-        renderItem={(item, isHighlighted) => (
-          <div
-            style={isHighlighted ? styles.highlightedItem : styles.item}
-            key={item.abbr}
-            id={item.abbr}
-          >{item.name}</div>
-        )}
+        inputProps={{ name: this.props.name }}
+        items={this.state.options}
+        value={this.state.value}
+        getItemValue={item => item.name}
+        renderItem={renderItem}
+        onSelect={this.handleInputSelect}
+        onChange={this.handleInputChange}
       />
     );
   }
 }
+
+OptionsInput.propTypes = {
+  name: React.PropTypes.string.isRequired,
+  onChange: React.PropTypes.func.isRequired,
+  matchOptionToTerm: React.PropTypes.func.isRequired,
+  url: React.PropTypes.string.isRequired,
+};
+
+export default OptionsInput;

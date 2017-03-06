@@ -8,13 +8,19 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 })
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/index.jsx',
   output: {
     path: path.resolve('dist'),
     filename: 'index.js'
   },
   module: {
-    rules: [{ 
+    rules: [{
+      enforce: "pre",
+      test: [/\.js$/, /\.jsx$/], 
+      exclude: /node_modules/,
+      loader: "eslint-loader",
+    },
+      { 
       test: [/\.js$/, /\.jsx$/], 
       loader: 'babel-loader',
       exclude: /node_modules/,
@@ -56,11 +62,11 @@ module.exports = {
     }],
   },
   resolve: {
-    modules: [
-      path.resolve('./src'),
-      path.resolve('./node_modules')
-    ],
-    extensions: [".jsx", ".js", ".sass"],
+    alias: {
+      components: path.resolve(__dirname, 'src/components/'),
+      public: path.resolve(__dirname, 'src/public/'),
+    },
+    extensions: [".jsx", ".js"],
   },
   plugins: [
     HtmlWebpackPluginConfig
