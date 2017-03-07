@@ -20,12 +20,6 @@ class Step extends React.Component {
 
   handleNext() {
     this.props.onNextStep();
-
-    if (this.props.onSubmit) {
-      this.props.onSubmit({
-        name: 'lucho',
-      });
-    }
   }
 
   render() {
@@ -60,7 +54,6 @@ Step.propTypes = {
   nextButton: React.PropTypes.string,
   prevButton: React.PropTypes.string,
   text: React.PropTypes.string,
-  onSubmit: React.PropTypes.func,
   onPrevStep: React.PropTypes.func,
   onNextStep: React.PropTypes.func,
   children: React.PropTypes.oneOfType([
@@ -73,7 +66,6 @@ Step.defaultProps = {
   nextButton: '',
   prevButton: '',
   text: '',
-  onSubmit: () => {},
   onPrevStep: () => {},
   onNextStep: () => {},
 };

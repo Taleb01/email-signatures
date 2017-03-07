@@ -6,14 +6,12 @@ import Input from 'components/Input/Input';
 import EmailSignature from 'components/EmailSignature/EmailSignature';
 import axios from 'axios';
 
-const INITIAL_STEP = 3;
-
 export default class Home extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      name: 'Lucho',
+      name: '',
       photo: '',
       position: '',
       phone: '',
@@ -46,17 +44,13 @@ export default class Home extends React.Component {
   render() {
     const userOptionsInput = {
       url: 'https://jsonplaceholder.typicode.com/users',
-      matchOptionToTerm: (option, value) => {
-        return (
-          option.name.toLowerCase().indexOf(value.toLowerCase()) !== -1 ||
-          option.username.toLowerCase().indexOf(value.toLowerCase()) !== -1
-        );
-      },
+      matchOptionToTerm: (option, value) => option.name.toLowerCase().indexOf(value.toLowerCase())
+      !== -1 || option.username.toLowerCase().indexOf(value.toLowerCase()) !== -1,
     };
 
     return (
       <AppContainer>
-        <Steps active={INITIAL_STEP} onChange={this.handleStepChange}>
+        <Steps onChange={this.handleStepChange}>
           <Step
             nextButton="What else?"
             text="Hey! I will create your <strong>email signature</strong> for you, but first,
@@ -83,9 +77,9 @@ export default class Home extends React.Component {
           <Step
             prevButton="Let me pick my name again"
             nextButton="Shut up and give me my signature"
-            text="Cool <strong>Luciano</strong>! Nice name ;) I made some research
+            text={`Cool <strong>${this.state.name}</strong>! Nice name ;) I made some research
             <small>(?)</small> and I found this data about you.<br>Feel free to update as you want
-            and uncheck those that you don’t want to show."
+            and uncheck those that you don’t want to show.`}
           >
             <Input
               value={this.state.name}
