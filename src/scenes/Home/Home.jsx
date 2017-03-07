@@ -5,12 +5,13 @@ import Step from 'components/Steps/Step/Step';
 import Input from 'components/Input/Input';
 import axios from 'axios';
 
+const INITIAL_STEP = 2;
+
 export default class Home extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      activeStep: 1,
       name: '',
       photo: '',
       position: '',
@@ -25,18 +26,14 @@ export default class Home extends React.Component {
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
-  handleStepChange(oldStep, newStep) {
+  handleStepChange(from) {
     const stepActions = {
       1: () => {
-        axios.get('https://jsonplaceholder.typicode.com/users/1').then(response => {
-          this.setState({
-            photo: response.data.username,
-          });
-        });
+        axios.get('https://jsonplaceholder.typicode.com/users/1').then(response => this.setState({ photo: response.data.username }));
       },
     };
 
-    if (typeof stepActions[oldStep] !== 'undefined') stepActions[oldStep]();
+    if (typeof stepActions[from] !== 'undefined') stepActions[from]();
   }
 
   handleInputChange(event) {
@@ -58,7 +55,7 @@ export default class Home extends React.Component {
 
     return (
       <AppContainer>
-        <Steps active={this.state.activeStep} onChange={this.handleStepChange}>
+        <Steps active={INITIAL_STEP} onChange={this.handleStepChange}>
           <Step
             nextButton="What else?"
             text="Hey! I will create your <strong>email signature</strong> for you, but first,
@@ -70,6 +67,7 @@ export default class Home extends React.Component {
               label="Who are you?"
               options={userOptionsInput}
               onChange={this.handleInputChange}
+              required
             />
 
             <Input
@@ -77,6 +75,7 @@ export default class Home extends React.Component {
               name="position"
               label="What are you?"
               onChange={this.handleInputChange}
+              required
             />
           </Step>
 
@@ -92,6 +91,7 @@ export default class Home extends React.Component {
               name="name"
               label="What's your name?"
               onChange={this.handleInputChange}
+              required
             />
 
             <Input
@@ -99,12 +99,48 @@ export default class Home extends React.Component {
               name="position"
               label="What do you do at Jampp?"
               onChange={this.handleInputChange}
+              required
             />
 
             <Input
               value={this.state.photo}
               name="photo"
               label="Paste a photo link as you wanna look"
+              onChange={this.handleInputChange}
+            />
+
+            <Input
+              value={this.state.phone}
+              name="phone"
+              label="What's your phone number?"
+              onChange={this.handleInputChange}
+            />
+
+            <Input
+              value={this.state.skype}
+              name="skype"
+              label="What's your Skype account?"
+              onChange={this.handleInputChange}
+            />
+
+            <Input
+              value={this.state.facebook}
+              name="facebook"
+              label="Paste your Facebook account"
+              onChange={this.handleInputChange}
+            />
+
+            <Input
+              value={this.state.linkedin}
+              name="linkedin"
+              label="Paste your LinkedIn account"
+              onChange={this.handleInputChange}
+            />
+
+            <Input
+              value={this.state.twitter}
+              name="twitter"
+              label="Paste your Twitter account"
               onChange={this.handleInputChange}
             />
           </Step>

@@ -1,4 +1,7 @@
 import React from 'react';
+import styles from './Steps.sass';
+
+const ANIMATION_DURATION = 700;
 
 class Steps extends React.Component {
   constructor(props) {
@@ -9,42 +12,54 @@ class Steps extends React.Component {
       total: this.props.children.length,
     };
 
-    this.handlePrevStep = this.handlePrevStep.bind(this);
-    this.handleNextStep = this.handleNextStep.bind(this);
+    this.animateTransition = this.animateTransition.bind(this);
+    this.handleNextStep = this.handleStepChange.bind(this, 1);
+    this.handlePrevStep = this.handleStepChange.bind(this, -1);
   }
 
-  handlePrevStep() {
-    if (this.state.step !== 1) {
-      const step = this.state.step - 1;
+  animateTransition(style, time, callback = () => {}) {
+    this.setState({
+      styleModifier: `${style}-1`,
+    });
 
-      this.props.onChange(this.state.step, step);
+    setTimeout(() => this.setState({ styleModifier: `${style}-2` }), time / 2);
 
+    setTimeout(() => {
       this.setState({
-        step,
+        styleModifier: '',
       });
-    }
+
+      callback();
+    }, time);
   }
 
-  handleNextStep() {
-    if (this.state.step !== this.state.total) {
-      const step = this.state.step + 1;
+  handleStepChange(modifier) {
+    const from = this.state.step;
+    const to = this.state.step + modifier;
 
-      this.props.onChange(this.state.step, step);
+    if (to >= 1 && to <= this.state.total) {
+      this.props.onChange(from, to);
 
-      this.setState({
-        step,
+      this.animateTransition('leaving', ANIMATION_DURATION, () => {
+        this.setState({ step: to });
+
+        this.animateTransition('appearing', ANIMATION_DURATION);
       });
     }
   }
 
   render() {
+    const styleName = this.state.styleModifier ?
+      `steps${this.state.styleModifier[0].toUpperCase()}${this.state.styleModifier.substring(1, this.state.length).replace('-', '')}` :
+      'steps';
+
     const childrenWithProps = React.cloneElement(this.props.children[this.state.step - 1], {
-      onNextStep: this.handleNextStep,
       onPrevStep: this.handlePrevStep,
+      onNextStep: this.handleNextStep,
     });
 
     return (
-      <div>
+      <div className={styles[styleName]}>
         {childrenWithProps}
       </div>
     );

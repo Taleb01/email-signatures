@@ -3,34 +3,72 @@ import OptionsInput from './OptionsInput/OptionsInput';
 import TextInput from './TextInput/TextInput';
 import styles from './Input.sass';
 
-const Input = ({ label, name, value, onChange, options }) => {
-  const input = options.url ?
-    (
-      <OptionsInput
-        value={value}
-        name={name}
-        onChange={onChange}
-        matchOptionToTerm={options.matchOptionToTerm}
-        url={options.url}
-      />
-    ) : (
-      <TextInput
-        value={value}
-        name={name}
-        onChange={onChange}
-      />
-    );
+class Input extends React.Component {
+  constructor(props) {
+    super(props);
 
-  return (
-    <div className={styles.textInput}>
-      <label htmlFor="user">{label}</label>
-      {input}
-    </div>
-  );
-};
+    this.state = {
+      enabled: true,
+    };
+
+    this.handleOptionalLabelChange = this.handleOptionalLabelChange.bind(this);
+  }
+
+  handleOptionalLabelChange() {
+    this.setState({
+      enabled: !this.state.enabled,
+    });
+  }
+
+  render() {
+    const input = this.props.options.url ?
+      (
+        <OptionsInput
+          value={this.props.value}
+          name={this.props.name}
+          onChange={this.props.onChange}
+          matchOptionToTerm={this.props.options.matchOptionToTerm}
+          url={this.props.options.url}
+        />
+      ) : (
+        <TextInput
+          value={this.props.value}
+          name={this.props.name}
+          onChange={this.props.onChange}
+        />
+      );
+
+    const inputContainerStyle = this.state.enabled ?
+      styles.inputContainer :
+      styles.inputContainerDisabled;
+
+    const optionalLabelStyle = this.state.enabled ?
+      styles.optionalLabelActive :
+      styles.optionalLabel;
+
+    const optionalLabel = !this.props.required ?
+      (
+        <button
+          className={optionalLabelStyle}
+          onClick={this.handleOptionalLabelChange}
+        ><span /></button>
+      ) : null;
+
+    return (
+      <div className={inputContainerStyle}>
+        <label className="label" htmlFor="user">{this.props.label}</label>
+        <div className={styles.inputWrapper}>
+          {input}
+          {optionalLabel}
+        </div>
+      </div>
+    );
+  }
+}
 
 Input.propTypes = {
   name: React.PropTypes.string.isRequired,
+  required: React.PropTypes.bool,
   value: React.PropTypes.string,
   onChange: React.PropTypes.func.isRequired,
   label: React.PropTypes.string.isRequired,
@@ -41,6 +79,7 @@ Input.propTypes = {
 };
 
 Input.defaultProps = {
+  required: false,
   value: '',
   options: {
     matchOptionToTerm: () => {},

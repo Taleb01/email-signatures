@@ -1,6 +1,32 @@
-@import "~public/stylesheets/vars";
+@import "~assets/stylesheets/vars";
 
-.text-input
+.input-wrapper
+  position: relative
+
+.optionalLabel
+  display: block
+  cursor: pointer
+  background: $secondary
+  width: 22px
+  height: 22px
+  position: absolute
+  top: 7px
+  right: 7px
+  border-radius: 50%
+  outline: 0
+  border: 0
+
+  span
+    display: block
+    width: 22px
+    height: 22px
+    background: url(/images/tick.svg)
+
+.optionalLabelActive
+  composes: optionalLabel
+  background: $call-out-aly
+
+.inputContainer
   width: 48%
   display: inline-block
   margin-bottom: 20px
@@ -31,3 +57,12 @@
     &:focus
       outline: none !important
       background-color: darken($primary, 2%)
+
+.inputContainerDisabled
+  composes: inputContainer
+
+  input 
+    opacity: .4
+    pointer-events: none
+    cursor: disabled
+    tab-index: -1
