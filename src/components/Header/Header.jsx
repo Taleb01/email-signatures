@@ -4,7 +4,7 @@ import styles from './Header.sass';
 const Header = ({ title }) =>
   <header className={styles.header}>
     <a href="/">
-      {title} @ <span className="logo">jampp</span>
+      {title} @ <span className={styles.logo}>jampp</span>
     </a>
   </header>;
 

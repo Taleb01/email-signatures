@@ -3,16 +3,17 @@ import AppContainer from 'components/AppContainer/AppContainer';
 import Steps from 'components/Steps/Steps';
 import Step from 'components/Steps/Step/Step';
 import Input from 'components/Input/Input';
+import EmailSignature from 'components/EmailSignature/EmailSignature';
 import axios from 'axios';
 
-const INITIAL_STEP = 2;
+const INITIAL_STEP = 3;
 
 export default class Home extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      name: '',
+      name: 'Lucho',
       photo: '',
       position: '',
       phone: '',
@@ -147,13 +148,13 @@ export default class Home extends React.Component {
 
           <Step
             prevButton="Let me fill my data again"
-            text="This is your <strong>signature</strong>:"
+            text="Well, here is the <em>sexiest email signature ever</em>. First, you have
+            to select them and copy (⌘+C).<br>Then, you have to
+            <a target='_blank' href='https://mail.google.com/mail/u/0/#settings/general'>click here</a>,
+            go to Signature and paste it (⌘+V)."
           >
             <div>
-              asd
-            </div>
-            <div>
-              asd
+              <EmailSignature {...this.state} />
             </div>
           </Step>
         </Steps>

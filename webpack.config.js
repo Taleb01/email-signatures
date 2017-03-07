@@ -11,18 +11,10 @@ module.exports = {
   entry: './src/index.jsx',
   output: {
     path: path.resolve('dist'),
-    filename: 'index.js'
+    filename: 'index.js',
   },
   module: {
-    rules: [{ 
-      test: /\.(jpe?g|gif|png|svg|woff|ttf|wav|mp3)$/, 
-      loader: "file-loader",
-      options: {
-        publicPath: path.resolve('src/assets/images'),
-        outputPath: 'img',
-      },
-    },
-    {
+    rules: [{
       enforce: "pre",
       test: [/\.js$/, /\.jsx$/], 
       exclude: /node_modules/,
@@ -72,7 +64,7 @@ module.exports = {
   resolve: {
     alias: {
       components: path.resolve(__dirname, 'src/components/'),
-      assets: path.resolve(__dirname, 'src/assets/'),
+      assets: path.resolve(__dirname, 'assets/'),
     },
     extensions: [".jsx", ".js"],
   },
