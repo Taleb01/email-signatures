@@ -8,7 +8,6 @@ class OptionsInput extends React.Component {
     super(props);
 
     this.state = {
-      url: props.url,
       value: '',
       options: [],
     };
@@ -22,12 +21,20 @@ class OptionsInput extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(this.state.url).then((response) => {
-      this.originalOptions = response.data;
+    let options = [];
 
-      this.setState({
-        options: response.data,
+    if (this.props.options.length > 0) {
+      options = this.props.options;
+    } else if (this.props.url !== '') {
+      axios.get(this.state.url).then((response) => {
+        options = response.data;
       });
+    }
+
+    this.originalOptions = options;
+
+    this.setState({
+      options,
     });
   }
 
@@ -57,10 +64,6 @@ class OptionsInput extends React.Component {
   }
 
   render() {
-    const wrapperStyle = {
-      display: 'block',
-    };
-
     const renderItem = (item, isHighlighted) => (
       <div
         className={isHighlighted ? styles.highlightedItem : styles.item}
@@ -71,7 +74,20 @@ class OptionsInput extends React.Component {
 
     return (
       <Autocomplete
-        wrapperStyle={wrapperStyle}
+        wrapperStyle={{
+          display: 'block',
+        }}
+        menuStyle={{
+          borderRadius: '3px',
+          boxShadow: '0 2px 12px rgba(0, 0, 0, 0.1)',
+          background: 'rgba(255, 255, 255, 0.9)',
+          padding: '2px 0',
+          fontSize: '90%',
+          position: 'fixed',
+          overflow: 'auto',
+          maxHeight: '50%', // TODO: don't cheat, let it flow to the bottom
+          zIndex: 999,
+        }}
         inputProps={{ name: this.props.name }}
         items={this.state.options}
         value={this.state.value}
@@ -88,7 +104,13 @@ OptionsInput.propTypes = {
   name: React.PropTypes.string.isRequired,
   onChange: React.PropTypes.func.isRequired,
   matchOptionToTerm: React.PropTypes.func.isRequired,
-  url: React.PropTypes.string.isRequired,
+  url: React.PropTypes.string,
+  options: React.PropTypes.array,
+};
+
+OptionsInput.defaultProps = {
+  url: '',
+  options: [],
 };
 
 export default OptionsInput;

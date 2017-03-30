@@ -4,11 +4,20 @@ import Steps from 'components/Steps/Steps';
 import Step from 'components/Steps/Step/Step';
 import Input from 'components/Input/Input';
 import EmailSignature from 'components/EmailSignature/EmailSignature';
-import axios from 'axios';
+
+import jamppersList from 'data/jamppers.json';
+import positionsList from 'data/positions.json';
+import lineOptionsList from 'data/lines.json';
+
+import styles from './Home.sass';
+
 
 export default class Home extends React.Component {
   constructor(props) {
     super(props);
+
+    this.handleStepChange = this.handleStepChange.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
 
     this.state = {
       name: '',
@@ -19,20 +28,37 @@ export default class Home extends React.Component {
       facebook: '',
       linkedin: '',
       twitter: '',
+      line: '',
     };
-
-    this.handleStepChange = this.handleStepChange.bind(this);
-    this.handleInputChange = this.handleInputChange.bind(this);
   }
 
-  handleStepChange(from) {
+  handleStepChange(from, to) {
+    const buildPhotoUrl = name => `http://jampp.com/assets/images/team-members/${name}-1.jpg`;
+
     const stepActions = {
-      1: () => {
-        axios.get('https://jsonplaceholder.typicode.com/users/1').then(response => this.setState({ photo: response.data.username }));
+      2: () => {
+        const chosenJampper = jamppersList.find(jampper => jampper.name === this.state.name);
+
+        if (chosenJampper) {
+          this.setState({
+            photo: buildPhotoUrl(chosenJampper.image),
+          });
+        }
+      },
+      3: () => {
+        if (this.state.line !== '') {
+          const chosenLine = lineOptionsList.find(line => line.name === this.state.line);
+
+          if (chosenLine) {
+            this.setState({
+              line: chosenLine.value,
+            });
+          }
+        }
       },
     };
 
-    if (typeof stepActions[from] !== 'undefined') stepActions[from]();
+    if (typeof stepActions[to] !== 'undefined') stepActions[to]();
   }
 
   handleInputChange(event) {
@@ -43,9 +69,21 @@ export default class Home extends React.Component {
 
   render() {
     const userOptionsInput = {
-      url: 'https://jsonplaceholder.typicode.com/users',
+      options: jamppersList,
       matchOptionToTerm: (option, value) => option.name.toLowerCase().indexOf(value.toLowerCase())
-      !== -1 || option.username.toLowerCase().indexOf(value.toLowerCase()) !== -1,
+      !== -1,
+    };
+
+    const positionOptionsInput = {
+      options: positionsList,
+      matchOptionToTerm: (option, value) => option.name.toLowerCase().indexOf(value.toLowerCase())
+      !== -1,
+    };
+
+    const lineOptionsInput = {
+      options: lineOptionsList,
+      matchOptionToTerm: (option, value) => option.name.toLowerCase().indexOf(value.toLowerCase())
+      !== -1,
     };
 
     return (
@@ -54,7 +92,7 @@ export default class Home extends React.Component {
           <Step
             nextButton="What else?"
             text="Hey! I will create your <strong>email signature</strong> for you, but first,
-            let me know a bit about you..."
+            let me know a little more about you..."
           >
             <Input
               value={this.state.name}
@@ -69,6 +107,7 @@ export default class Home extends React.Component {
               value={this.state.position}
               name="position"
               label="What are you?"
+              options={positionOptionsInput}
               onChange={this.handleInputChange}
               required
             />
@@ -77,9 +116,9 @@ export default class Home extends React.Component {
           <Step
             prevButton="Let me pick my name again"
             nextButton="Shut up and give me my signature"
-            text={`Cool <strong>${this.state.name}</strong>! Nice name ;) I made some research
-            <small>(?)</small> and I found this data about you.<br>Feel free to update as you want
-            and uncheck those that you don’t want to show.`}
+            text={`Cool <strong>${this.state.name}</strong>! Nice name ;) I did a little research
+            <small>(?)</small> and found this info, feel free to edit anything you like.<br>
+            Note that you can uncheck the fields you don’t want to include on your signature.`}
           >
             <Input
               value={this.state.name}
@@ -121,33 +160,46 @@ export default class Home extends React.Component {
             <Input
               value={this.state.facebook}
               name="facebook"
-              label="Paste your Facebook account"
+              label="Paste your Facebook link"
+              disabledValue="https://www.facebook.com/jamppHQ/"
               onChange={this.handleInputChange}
             />
 
             <Input
               value={this.state.linkedin}
               name="linkedin"
-              label="Paste your LinkedIn account"
+              label="Paste your LinkedIn link"
+              disabledValue="https://www.linkedin.com/company/jampp"
               onChange={this.handleInputChange}
             />
 
             <Input
               value={this.state.twitter}
               name="twitter"
-              label="Paste your Twitter account"
+              label="Paste your Twitter link"
+              disabledValue="https://twitter.com/jampp"
+              onChange={this.handleInputChange}
+            />
+
+            <Input
+              value={this.state.line}
+              name="line"
+              label="Add a line promoting our awesome company"
+              options={lineOptionsInput}
               onChange={this.handleInputChange}
             />
           </Step>
 
           <Step
             prevButton="Let me fill my data again"
-            text="Well, here is the <em>sexiest email signature ever</em>. First, you have
-            to select them and copy (⌘+C).<br>Then, you have to
-            <a target='_blank' href='https://mail.google.com/mail/u/0/#settings/general'>click here</a>,
-            go to Signature and paste it (⌘+V)."
+            text="Well, here is the <em>sexiest email signature ever</em><br>
+            Let me walk you through the next steps... it’s really simple:<br>
+            <b>1</b>. Select the text and copy it (⌘+C)<br>
+            <b>2</b>. <a target='_blank' href='https://mail.google.com/mail/u/0/#settings/general'><u>Click here</u></a><br>
+            <b>3</b>. Go to signature and paste (⌘+V)<br>
+            <em>Voilá!</em>"
           >
-            <div>
+            <div className={styles.emailSignatureContainer}>
               <EmailSignature {...this.state} />
             </div>
           </Step>

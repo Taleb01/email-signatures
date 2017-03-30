@@ -15,6 +15,8 @@ class Steps extends React.Component {
     this.animateTransition = this.animateTransition.bind(this);
     this.handleNextStep = this.handleStepChange.bind(this, 1);
     this.handlePrevStep = this.handleStepChange.bind(this, -1);
+
+    this.props.onChange(0, 1);
   }
 
   animateTransition(style, time, callback = () => {}) {

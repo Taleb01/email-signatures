@@ -1,19 +1,26 @@
 $color: #373965
 
-$photoSize: 110px
-$logoSize: 20px
+$photoSize: 85px
+$logoSize: 18px
 $socialSize: 18px
 
 $paddingBorder: 10px
 
-.photo,
+.picture,
 .data
   display: inline-block
+  font-size: 0
 
-.photo
+.picture
   padding-right: $paddingBorder
   border-right: 1px solid $color
   text-align: center
+
+  .logo-image
+    display: block
+    margin-top: -5px
+    width: $logoSize * 1.11 * 3
+    height: $logoSize * 1.11
 
 .person
   border-radius: 50%
@@ -21,15 +28,12 @@ $paddingBorder: 10px
   height: $photoSize
   object-fit: cover
 
-.logo
-  display: block
-  margin: 15px auto 0 auto
-  width: $logoSize * 3
-  height: $logoSize
-
 .data
   vertical-align: top
   padding-left: $paddingBorder
+  position: relative
+  left: -1px
+  border-left: 1px solid $color
   font-family: 'Roboto', sans-serif
   letter-spacing: .5px
   color: $color
@@ -56,8 +60,15 @@ $paddingBorder: 10px
 .social
   margin-top: 10px
 
-  img
-    width: $socialSize
-    height: $socialSize
-    margin-right: 2px
+.social-image
+  width: $socialSize
+  height: $socialSize
+  margin-right: 7px
 
+.logo-image
+  margin: 0 auto 0 auto
+  width: $logoSize * 3
+  height: $logoSize
+
+.small
+  font-size: 10px

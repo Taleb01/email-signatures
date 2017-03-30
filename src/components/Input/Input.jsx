@@ -15,13 +15,24 @@ class Input extends React.Component {
   }
 
   handleOptionalLabelChange() {
+    if (this.state.enabled) {
+      this.backupText = this.props.value;
+    }
+
+    this.props.onChange({
+      target: {
+        name: this.props.name,
+        value: this.state.enabled ? this.props.disabledValue : this.backupText,
+      },
+    });
+
     this.setState({
       enabled: !this.state.enabled,
     });
   }
 
   render() {
-    const input = this.props.options.url ?
+    const input = (this.props.options.url !== '' || this.props.options.options.length > 0) ?
       (
         <OptionsInput
           value={this.props.value}
@@ -29,6 +40,7 @@ class Input extends React.Component {
           onChange={this.props.onChange}
           matchOptionToTerm={this.props.options.matchOptionToTerm}
           url={this.props.options.url}
+          options={this.props.options.options}
         />
       ) : (
         <TextInput
@@ -72,18 +84,22 @@ Input.propTypes = {
   value: React.PropTypes.string,
   onChange: React.PropTypes.func.isRequired,
   label: React.PropTypes.string.isRequired,
+  disabledValue: React.PropTypes.string,
   options: React.PropTypes.shape({
     matchOptionToTerm: React.PropTypes.func,
     url: React.PropTypes.string,
+    options: React.PropTypes.array,
   }),
 };
 
 Input.defaultProps = {
   required: false,
   value: '',
+  disabledValue: '',
   options: {
     matchOptionToTerm: () => {},
     url: '',
+    options: [],
   },
 };
 

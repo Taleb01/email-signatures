@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Have you seen our new website?",
+    "value":  "Have you seen our <a href='http://jampp.com'>new website</a>?"
+  },
+  {
+    "name": "We are hiring geeks!",
+    "value":  "<a href='http://jampp.com/jobs'>We are hiring</a> geeks!"
+  },
+  {
+    "name": "Boost your mobile sales",
+    "value":  "Boost your mobile sales"
+  }
+]

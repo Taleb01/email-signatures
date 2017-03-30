@@ -1,0 +1,326 @@
+[
+  {
+    "name": "Andre Brener",
+    "image": "Andre"
+  },
+  {
+    "name": "Angeles Mazzucchelli",
+    "image": "Angie"
+  },
+  {
+    "name": "Antonio Affonseca",
+    "image": "Antonio"
+  },
+  {
+    "name": "Benjamín Pérez Baldoni",
+    "image": "Benja"
+  },
+  {
+    "name": "Benjamin Waters",
+    "image": "Ben"
+  },
+  {
+    "name": "Carlos Pita",
+    "image": "Carlos"
+  },
+  {
+    "name": "Carlos Quinodoz Pinat",
+    "image": "Quino"
+  },
+  {
+    "name": "Cecilia Silvano",
+    "image": "Ceci-S"
+  },
+  {
+    "name": "Cecilia Cañizares",
+    "image": "Ceci-C"
+  },
+  {
+    "name": "Chama EL KASRI",
+    "image": "Chama"
+  },
+  {
+    "name": "Chris Blair",
+    "image": "Chris"
+  },
+  {
+    "name": "Cristian Lopez",
+    "image": "Cristian"
+  },
+  {
+    "name": "Diego Meller",
+    "image": "Diego"
+  },
+  {
+    "name": "Eitan Rosenzvaig",
+    "image": "Eitan"
+  },
+  {
+    "name": "Emiliano Castagnari",
+    "image": "Emi"
+  },
+  {
+    "name": "Federico Chimento",
+    "image": "FedeC"
+  },
+  {
+    "name": "Federico Germino",
+    "image": "FedeG"
+  },
+  {
+    "name": "Fernando Otero",
+    "image": "Fer"
+  },
+  {
+    "name": "Florencia Vago",
+    "image": "Flor"
+  },
+  {
+    "name": "Florian Lutz",
+    "image": "Florian"
+  },
+  {
+    "name": "Francis Lachica Guini",
+    "image": "Francis"
+  },
+  {
+    "name": "Horacio Fucaraccio",
+    "image": "Horacio"
+  },
+  {
+    "name": "Gabriel Oyarzabal",
+    "image": "Gabriel"
+  },
+  {
+    "name": "Gabriela Suarez",
+    "image": "Gabi"
+  },
+  {
+    "name": "Gervasio Calderón",
+    "image": "Gerva"
+  },
+  {
+    "name": "Giulia Baiocchi",
+    "image": "Giulia"
+  },
+  {
+    "name": "Guido Crego",
+    "image": "Guido"
+  },
+  {
+    "name": "Guillermo Giovagnoli",
+    "image": "Guille"
+  },
+  {
+    "name": "Illia Kharytonov",
+    "image": "Illia"
+  },
+  {
+    "name": "Jack Matterson",
+    "image": "Jack"
+  },
+  {
+    "name": "Javier Cáceres",
+    "image": "Javi"
+  },
+  {
+    "name": "Joana Picq",
+    "image": "Joana"
+  },
+  {
+    "name": "João Candeias",
+    "image": "Joao"
+  },
+  {
+    "name": "Joff Hamilton-Dick",
+    "image": "Joff"
+  },
+  {
+    "name": "Jose Navas",
+    "image": "Jose"
+  },
+  {
+    "name": "Juan Btesh",
+    "image": "Juan"
+  },
+  {
+    "name": "Juan Pampliega",
+    "image": "Pampa"
+  },
+  {
+    "name": "Julia Rodríguez Ribas",
+    "image": "Julia"
+  },
+  {
+    "name": "Claudio Freire",
+    "image": "Klauss"
+  },
+  {
+    "name": "Leandro Tremari",
+    "image": "Lean-T"
+  },
+  {
+    "name": "Leandro Zeballos",
+    "image": "Lean"
+  },
+  {
+    "name": "Luciano Di Pasquale",
+    "image": "Lucho"
+  },
+  {
+    "name": "Macarena Maidana",
+    "image": "Maca"
+  },
+  {
+    "name": "Maite Barreneche",
+    "image": "Maite"
+  },
+  {
+    "name": "María Veloso",
+    "image": "Maru"
+  },
+  {
+    "name": "Mariano Basile",
+    "image": "Mariano"
+  },
+  {
+    "name": "Martin Añazco",
+    "image": "Martin-A"
+  },
+  {
+    "name": "Martina Lalanne",
+    "image": "Martu"
+  },
+  {
+    "name": "Juan Mateo de Monasterio",
+    "image": "Teo"
+  },
+  {
+    "name": "Matheus Santos",
+    "image": "Mat-S"
+  },
+  {
+    "name": "Matheus Braga",
+    "image": "Mat-B"
+  },
+  {
+    "name": "Nicolás Finkelstein",
+    "image": "Nico-F"
+  },
+  {
+    "name": "Nicolas Cruces",
+    "image": "Nico-C"
+  },
+  {
+    "name": "Nicolas Socolovsky",
+    "image": "Nico-S"
+  },
+  {
+    "name": "Pablo Diaz Ogni",
+    "image": "Pablo-D"
+  },
+  {
+    "name": "Pablo Malet",
+    "image": "Pablo-M"
+  },
+  {
+    "name": "Pamela Corvino",
+    "image": "Pam"
+  },
+  {
+    "name": "Patricio Rocca Huguet",
+    "image": "Pato"
+  },
+  {
+    "name": "Patrick Hubregsen",
+    "image": "Patrick"
+  },
+  {
+    "name": "Pedro Beraza",
+    "image": "Pb"
+  },
+  {
+    "name": "Pedro Ferrari",
+    "image": "Pedro"
+  },
+  {
+    "name": "Philip Weiskirchen",
+    "image": "Philip"
+  },
+  {
+    "name": "Pablo Lorenzatto",
+    "image": "Pablo-L"
+  },
+  {
+    "name": "Rami Richards",
+    "image": "Rami"
+  },
+  {
+    "name": "Rich Cannon",
+    "image": "Rich"
+  },
+  {
+    "name": "Rocio Vivot",
+    "image": "Rochi"
+  },
+  {
+    "name": "Romina Aramburu",
+    "image": "Romi"
+  },
+  {
+    "name": "Santiago Hernandez",
+    "image": "Santi"
+  },
+  {
+    "name": "Sebastian Montini",
+    "image": "Seba"
+  },
+  {
+    "name": "Sofía Enriquez",
+    "image": "Sofi"
+  },
+  {
+    "name": "Sol Mizrahi",
+    "image": "Sol"
+  },
+  {
+    "name": "Tatiana Kramarz",
+    "image": "Tati"
+  },
+  {
+    "name": "Teresa Fontanella",
+    "image": "Tere"
+  },
+  {
+    "name": "Martin Bonamico",
+    "image": "Martin-B"
+  },
+  {
+    "name": "Tomas Zulberti",
+    "image": "Tomas-Z"
+  },
+  {
+    "name": "Tomas Crespo",
+    "image": "Tomas-Cr"
+  },
+  {
+    "name": "Tomás Güida",
+    "image": "Tom"
+  },
+  {
+    "name": "Uri Lichtmann",
+    "image": "Uri"
+  },
+  {
+    "name": "Valentina Cardoni",
+    "image": "Valen"
+  },
+  {
+    "name": "Yamila Lede",
+    "image": "Yami"
+  },
+  {
+    "name": "Zahid Muhammad",
+    "image": ""
+  }
+]
