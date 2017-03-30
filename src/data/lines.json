@@ -1,11 +1,11 @@
 [
   {
     "name": "Have you seen our new website?",
-    "value":  "Have you seen our <a href='http://jampp.com'>new website</a>?"
+    "value":  "Have you seen our <strong><a href='http://jampp.com'>new website</a></strong>?"
   },
   {
     "name": "We are hiring geeks!",
-    "value":  "<a href='http://jampp.com/jobs'>We are hiring</a> geeks!"
+    "value":  "<strong><a href='http://jampp.com/jobs'>We are hiring</a></strong> geeks!"
   },
   {
     "name": "Boost your mobile sales",

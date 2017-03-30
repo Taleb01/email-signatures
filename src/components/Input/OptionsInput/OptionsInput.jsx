@@ -33,9 +33,7 @@ class OptionsInput extends React.Component {
 
     this.originalOptions = options;
 
-    this.setState({
-      options,
-    });
+    this.setState({ options });
   }
 
   handleInputChange(event, value) {
@@ -105,7 +103,11 @@ OptionsInput.propTypes = {
   onChange: React.PropTypes.func.isRequired,
   matchOptionToTerm: React.PropTypes.func.isRequired,
   url: React.PropTypes.string,
-  options: React.PropTypes.array,
+  options: React.PropTypes.arrayOf([
+    React.PropTypes.shape({
+      name: React.PropTypes.string,
+    }),
+  ]),
 };
 
 OptionsInput.defaultProps = {
