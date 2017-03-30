@@ -20,15 +20,15 @@ export default class Home extends React.Component {
     this.handleInputChange = this.handleInputChange.bind(this);
 
     this.state = {
-      name: 'LDP',
-      photo: 'http://jampp.com/assets/images/team-members/Lucho-1.jpg',
-      position: 'blablal',
-      phone: 'blablal',
-      skype: 'blablal',
-      facebook: 'blablal',
+      name: '',
+      photo: '',
+      position: '',
+      phone: '',
+      skype: '',
+      facebook: '',
       linkedin: '',
       twitter: '',
-      line: 'blablal',
+      line: '',
     };
   }
 
@@ -88,7 +88,7 @@ export default class Home extends React.Component {
 
     return (
       <AppContainer>
-        <Steps onChange={this.handleStepChange} active={3}>
+        <Steps onChange={this.handleStepChange}>
           <Step
             nextButton="What else?"
             text="Hey! I will create your <strong>email signature</strong> for you, but first,
