@@ -1,0 +1,21 @@
+from fabric.api import *
+
+def prod():
+  env.hosts = [
+    'HOST',
+  ]
+  env.user = 'JAMPPER'
+  env.server_user = 'SERVER_USER'
+  env.remote_app_dir = 'DIR'
+
+  env.where = 'test'
+
+
+def deploy():
+  update()    
+#    clean_cache()
+# php_restart()
+
+def update():
+  with cd (env.remote_app_dir):
+    run("git pull")
