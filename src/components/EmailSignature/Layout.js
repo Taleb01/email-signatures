@@ -4,21 +4,23 @@ const Layout = {
   renderPhoto: photo => {
     if (photo) {
       return `
-        <table border="1" style="font-family: Arial, Serif; width: 100%; max-width: 100px; float:left; padding:0px 5px; border-width: 0px;">
-          <tr style="border: none;">
-            <td style="border: none; text-align: center;">            
-              <img style="width: 90px; height: 90px; border-radius: 50%;" src="${photo}" />
-            </td>
-          </tr>
-          <tr style="border: none;">
-            <td style="height: 5px; width: 100%; border: none;"></td>
-          </tr>
-          <tr style="border: none; text-align: center;">
-            <td style="border: none;">            
-              <img style="width: 60px; height: 20px; margin-top: 5px" src="https://s3.amazonaws.com/creatives.jampp.com/assets/1/120x40_Lc7bGjDqEH1cvpErp0iFmw.png" />
-            </td>
-          </tr>
-        </table>
+        <td style="border: none; width: 104px; max-width: 104px">
+          <table border="1" style="font-family: Arial, Serif; width: 100%; max-width: 100px; float:left; padding:0px 5px; border-width: 0px;">
+            <tr style="border: none;">
+              <td style="border: none; text-align: center;">            
+                <img style="width: 90px; height: 90px; border-radius: 50%;" src="${photo}" />
+              </td>
+            </tr>
+            <tr style="border: none;">
+              <td style="height: 5px; width: 100%; border: none;"></td>
+            </tr>
+            <tr style="border: none; text-align: center;">
+              <td style="border: none;">            
+                <img style="width: 60px; height: 20px; margin-top: 5px" src="https://s3.amazonaws.com/creatives.jampp.com/assets/1/120x40_Lc7bGjDqEH1cvpErp0iFmw.png" />
+              </td>
+            </tr>
+          </table>
+        </td>
       `;
     }
 
@@ -50,6 +52,27 @@ const Layout = {
         </tr>
         <tr> 
           <td style="border: none; width: 100%; height: 5px"></td> 
+        </tr>
+      `;
+    }
+
+    return '';
+  },
+  renderSocialIcons: (facebook, linkedin, twitter, photo) => {
+    if (facebook || linkedin || twitter || photo === '') {
+      return `
+        <tr style="border: none;">
+          <td style="margin: 0px; border: none; padding-top: 6px;">
+            ${Layout.renderSocialIcon(facebook, 'https://s3.amazonaws.com/creatives.jampp.com/assets/1/36x36_zapNgIVbbozH1jdSkJJ-wQ.png')}
+            ${Layout.renderSocialIcon(linkedin, 'https://s3.amazonaws.com/creatives.jampp.com/assets/1/36x36_IX1BSlphrY4WbZd1XH4jzw.png')}
+            ${Layout.renderSocialIcon(twitter, 'https://s3.amazonaws.com/creatives.jampp.com/assets/1/36x36_tZ2xOHsvMRhGjY2tG6aYkg.png')}
+
+            ${Layout.renderLogo(photo)}
+          </td>
+        </tr>
+        <tr> 
+          <td style="border: none; width: 100%; height: 5px">
+          </td>
         </tr>
       `;
     }
@@ -105,9 +128,9 @@ const Layout = {
     <link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css" />
 
     <table border="0" style="width: 100%; max-width: 100%; height: 136px;">
-      <tr>
-        <td>
-          ${Layout.renderPhoto(photo)}
+      <tr style="border: none; width: 100%; max-width: 100%">
+        ${Layout.renderPhoto(photo)}
+        <td style="border: none; width: 100%; max-width: 300px">
           <table border="1" style="font-family: Roboto, Arial, Serif; width: 100%; max-width: 300px; height: 136px; float:left; border-width: 0px; border-color: #373965; border-left-width: ${Layout.getBorderLeftWith(photo)};">
             <tr style="border: none;">
               <td style="border: none;">
@@ -127,25 +150,13 @@ const Layout = {
                       </td>
                     </tr>
                     <tr> 
-                      <td style="border: none; width: 100%; height: 5px"></td> 
+                      <td style="border: none; width: 100%; height: 4px">
+                        <img alt="px" src="https://pixel-geo.prfct.co/sseg?add=1524681&source=js_tag&a_id=11615" width="1" height="1" border="0" />
+                      </td> 
                     </tr>
                     ${Layout.renderPhone(phone)}
                     ${Layout.renderSkype(skype)}
-                    <tr style="border: none;">
-                      <td style="margin: 0px; border: none; padding-top: 6px;">
-                        ${Layout.renderSocialIcon(facebook, 'https://s3.amazonaws.com/creatives.jampp.com/assets/1/36x36_zapNgIVbbozH1jdSkJJ-wQ.png')}
-                        ${Layout.renderSocialIcon(linkedin, 'https://s3.amazonaws.com/creatives.jampp.com/assets/1/36x36_IX1BSlphrY4WbZd1XH4jzw.png')}
-                        ${Layout.renderSocialIcon(twitter, 'https://s3.amazonaws.com/creatives.jampp.com/assets/1/36x36_tZ2xOHsvMRhGjY2tG6aYkg.png')}
-
-                        ${Layout.renderLogo(photo)}
-
-                        <img alt="px" src="https://pixel-geo.prfct.co/sseg?add=1524681&source=js_tag&a_id=11615" width="1" height="1" border="0" />
-                      </td>
-                    </tr>
-                    <tr> 
-                      <td style="border: none; width: 100%; height: 5px"></td> 
-                    </tr>
-
+                    ${Layout.renderSocialIcons(facebook, linkedin, twitter, photo)}
                     ${Layout.renderLine(line)}
                   </tbody>
                 </table>
