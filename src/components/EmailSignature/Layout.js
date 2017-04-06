@@ -7,7 +7,7 @@ const Layout = {
         <td style="border: none; width: 104px; max-width: 104px">
           <table border="1" style="font-family: Arial, Serif; width: 100%; max-width: 100px; float:left; padding:0px 5px; border-width: 0px;">
             <tr style="border: none;">
-              <td style="border: none; text-align: center;">            
+              <td style="border: none; text-align: center;">           
                 <img style="width: 90px; height: 90px; border-radius: 50%;" src="${photo}" />
               </td>
             </tr>
@@ -15,7 +15,7 @@ const Layout = {
               <td style="height: 5px; width: 100%; border: none;"></td>
             </tr>
             <tr style="border: none; text-align: center;">
-              <td style="border: none;">            
+              <td style="border: none;">           
                 <img style="width: 60px; height: 20px; margin-top: 5px" src="https://s3.amazonaws.com/creatives.jampp.com/assets/1/120x40_Lc7bGjDqEH1cvpErp0iFmw.png" />
               </td>
             </tr>
@@ -34,8 +34,8 @@ const Layout = {
             <span style="color: #373965;">${phone}</span>
           </td>
         </tr>
-        <tr> 
-          <td style="border: none; width: 100%; height: 5px"></td> 
+        <tr>
+          <td style="border: none; width: 100%; height: 5px"></td>
         </tr>
       `;
     }
@@ -50,8 +50,8 @@ const Layout = {
             <span style="color: #373965;">Skype: </span> <span style="font-weight: bold; color: #373965;"><a href="skype:${skype}">${skype}</a></span>
           </td>
         </tr>
-        <tr> 
-          <td style="border: none; width: 100%; height: 5px"></td> 
+        <tr>
+          <td style="border: none; width: 100%; height: 5px"></td>
         </tr>
       `;
     }
@@ -70,7 +70,7 @@ const Layout = {
             ${Layout.renderLogo(photo)}
           </td>
         </tr>
-        <tr> 
+        <tr>
           <td style="border: none; width: 100%; height: 5px">
           </td>
         </tr>
@@ -141,18 +141,18 @@ const Layout = {
                         <span style="color: #373965;">${name}</span>
                       </td>
                     </tr>
-                    <tr> 
-                      <td style="border: none; width: 100%; height: 5px"></td> 
+                    <tr>
+                      <td style="border: none; width: 100%; height: 5px"></td>
                     </tr>
                     <tr style=" border: none;">
                       <td style="margin: 0px; font-family: Roboto, Arial, Serif; font-size: 10pt;  font-weight: 100; border: none;">
                         <span style="color: #373965;">${position}</span>
                       </td>
                     </tr>
-                    <tr> 
+                    <tr>
                       <td style="border: none; width: 100%; height: 4px">
                         <img alt="px" src="https://pixel-geo.prfct.co/sseg?add=1524681&source=js_tag&a_id=11615" width="1" height="1" border="0" />
-                      </td> 
+                      </td>
                     </tr>
                     ${Layout.renderPhone(phone)}
                     ${Layout.renderSkype(skype)}

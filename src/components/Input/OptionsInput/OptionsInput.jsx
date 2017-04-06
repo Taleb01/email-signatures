@@ -83,7 +83,7 @@ class OptionsInput extends React.Component {
           fontSize: '90%',
           position: 'fixed',
           overflow: 'auto',
-          maxHeight: 'auto', // TODO: don't cheat, let it flow to the bottom
+          maxHeight: '50%', // TODO: don't cheat, let it flow to the bottom
           bottom: '5%',
           zIndex: 999,
         }}
