@@ -17,10 +17,13 @@
     background: lighten($call-out, 15%)
 
 .btn-inverted
-  composes: btn
   background: #fff
   color: $call-out
 
   &:hover
     background: #fff
     border-color: lighten($call-out, 15%)
+
+.btn-disabled
+  pointer-events: none
+  opacity: .4

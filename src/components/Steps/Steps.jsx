@@ -56,6 +56,7 @@ class Steps extends React.Component {
       'steps';
 
     const childrenWithProps = React.cloneElement(this.props.children[this.state.step - 1], {
+      onValidate: this.props.onValidate,
       onPrevStep: this.handlePrevStep,
       onNextStep: this.handleNextStep,
     });
@@ -69,7 +70,8 @@ class Steps extends React.Component {
 }
 
 Steps.propTypes = {
-  onChange: React.PropTypes.func,
+  onValidate: React.PropTypes.func.isRequired,
+  onChange: React.PropTypes.func.isRequired,
   active: React.PropTypes.number,
   children: React.PropTypes.arrayOf(React.PropTypes.element).isRequired,
 };

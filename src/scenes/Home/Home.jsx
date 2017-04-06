@@ -16,6 +16,7 @@ export default class Home extends React.Component {
   constructor(props) {
     super(props);
 
+    this.handleFormValidate = this.handleFormValidate.bind(this);
     this.handleStepChange = this.handleStepChange.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
 
@@ -30,6 +31,15 @@ export default class Home extends React.Component {
       twitter: '',
       line: '',
     };
+  }
+
+  // eslint-disable-next-line
+  handleFormValidate(inputs) {
+    if (inputs) {
+      return inputs.filter(input => this.state[input] === '').length === 0;
+    }
+
+    return true;
   }
 
   handleStepChange(from, to) {
@@ -88,7 +98,10 @@ export default class Home extends React.Component {
 
     return (
       <AppContainer>
-        <Steps onChange={this.handleStepChange}>
+        <Steps
+          onChange={this.handleStepChange}
+          onValidate={this.handleFormValidate}
+        >
           <Step
             nextButton="What else?"
             text="Hey! I will create your <strong>email signature</strong> for you, but first,

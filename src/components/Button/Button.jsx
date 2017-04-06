@@ -2,11 +2,12 @@ import React from 'react';
 import styles from './Button.sass';
 
 const Button = ({ theme, onClick, children }) => {
-  const style = theme === 'inverted' ?
-    styles.btnInverted :
-    styles.btn;
+  let btnStyle = styles.btn;
 
-  return <button type="button" onClick={onClick} className={style}>{children}</button>;
+  if (theme === 'inverted') btnStyle += ` ${styles.btnInverted}`;
+  if (theme === 'disabled') btnStyle += ` ${styles.btnDisabled}`;
+
+  return <button type="button" onClick={onClick} className={btnStyle}>{children}</button>;
 };
 
 Button.propTypes = {
