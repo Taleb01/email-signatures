@@ -33,6 +33,7 @@ class OptionsInput extends React.Component {
 
     this.originalOptions = options;
 
+    // eslint-disable-next-line
     this.setState({ options });
   }
 
@@ -104,11 +105,9 @@ OptionsInput.propTypes = {
   onChange: React.PropTypes.func.isRequired,
   matchOptionToTerm: React.PropTypes.func.isRequired,
   url: React.PropTypes.string,
-  options: React.PropTypes.arrayOf([
-    React.PropTypes.shape({
-      name: React.PropTypes.string,
-    }),
-  ]),
+  options: React.PropTypes.arrayOf(React.PropTypes.shape({
+    name: React.PropTypes.string,
+  })),
 };
 
 OptionsInput.defaultProps = {
