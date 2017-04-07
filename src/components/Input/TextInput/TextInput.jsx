@@ -1,7 +1,15 @@
 import React from 'react';
+import styles from '../Input.sass';
 
-const TextInput = ({ name, value, onChange }) =>
-  <input type="text" name={name} value={value} onChange={onChange} />;
+const TextInput = ({ name, value, onChange }) => (
+  <input
+    type="text"
+    className={styles.input}
+    name={name}
+    value={value}
+    onChange={onChange}
+  />
+);
 
 TextInput.propTypes = {
   name: React.PropTypes.string.isRequired,

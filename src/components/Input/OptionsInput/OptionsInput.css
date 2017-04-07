@@ -1,0 +1,82 @@
+@import "~assets/stylesheets/vars";
+
+.Select {
+  .Select-control {
+    background: $primary;
+    width: 100%;
+    border: 0;
+    border-radius: 3px;
+    font-family: $font-family;
+    font-weight: $font-weight;
+    letter-spacing: $font-letter-spacing;
+    font-size: 14px;
+    color: transparentize($call-out, 0.4);
+    transition: all .5s;
+
+    .Select-value-label,
+    .Select-placeholder {
+      color: transparentize($call-out, 0.4) !important;
+    }
+
+    .Select-placeholder {
+      line-height: 36px;
+    }
+
+    .Select-input {
+      height: 38px;
+      line-height: 36px;
+
+      input {
+        color: transparentize($call-out, 0.4) !important;
+      }
+    }
+
+    .Select-clear {
+      position: relative;
+      top: 2px;
+    }
+
+    &:focus {
+      outline: none !important;
+      background-color: darken($primary, 2%);
+      box-shadow: 0 0 0;
+    }
+  }
+
+  &.is-open {
+    .Select-control {
+      background: $primary !important;
+    }
+  }
+
+  &.is-focused {
+    .Select-control {
+      background: darken($primary, 2%) !important;
+    }
+  }
+
+  &.is-focused:not(.is-open) {
+    .Select-control {
+      border-color: transparent;
+      box-shadow: 0 0 0;
+    }
+  }
+
+  .Select-menu-outer {
+    border-color: $primary;
+    background: rgba(255, 255, 255, .98);
+
+    .Select-option,
+    .Select-noresults {
+      font-size: 13px;
+      padding: 1px 10px;
+      background: transparent;
+
+      &.is-selected,
+      &.is-focused {
+        background: $call-out;
+        color: #fff,
+      }
+    }
+  }
+}

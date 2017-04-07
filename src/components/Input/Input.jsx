@@ -75,7 +75,7 @@ class Input extends React.Component {
 
     return (
       <div className={inputContainerStyle}>
-        <label className="label" htmlFor="user">{this.props.label} {requiredLabel}</label>
+        <label className={styles.label} htmlFor="user">{this.props.label} {requiredLabel}</label>
         <div className={styles.inputWrapper}>
           {input}
           {defaultValueButton}
