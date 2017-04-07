@@ -30,13 +30,16 @@ export default class Home extends React.Component {
       linkedin: '',
       twitter: '',
       line: '',
+      validInputs: [],
     };
   }
 
-  // eslint-disable-next-line
   handleFormValidate(inputs) {
-    if (inputs) {
-      return inputs.filter(input => this.state[input] === '').length === 0;
+    if (inputs.length > 0) {
+      return inputs
+        .filter(input => input.props.required &&
+          this.state.validInputs.indexOf(input.props.name) === -1)
+        .length === 0;
     }
 
     return true;
@@ -53,6 +56,8 @@ export default class Home extends React.Component {
           this.setState({
             photo: buildPhotoUrl(chosenJampper.image),
           });
+
+          this.handleInputValidate('photo', true);
         }
       },
       3: () => {
@@ -63,6 +68,8 @@ export default class Home extends React.Component {
             this.setState({
               line: chosenLine.value,
             });
+
+            this.handleInputValidate('line', true);
           }
         }
       },
@@ -71,7 +78,24 @@ export default class Home extends React.Component {
     if (typeof stepActions[to] !== 'undefined') stepActions[to]();
   }
 
-  handleInputChange(event) {
+  handleInputValidate(name, isValid) {
+    const validInputs = this.state.validInputs;
+    const indexValidInput = validInputs.indexOf(name);
+
+    if (isValid && indexValidInput === -1) {
+      validInputs.push(name);
+    } else if (!isValid) {
+      validInputs.splice(indexValidInput, 1);
+    }
+
+    this.setState({ validInputs });
+  }
+
+  handleInputChange(event, isRequired) {
+    if (isRequired) {
+      this.handleInputValidate(event.target.name, event.target.value !== '');
+    }
+
     this.setState({
       [event.target.name]: event.target.value,
     });
@@ -154,6 +178,7 @@ export default class Home extends React.Component {
               name="photo"
               label="Paste a photo link as you wanna look"
               onChange={this.handleInputChange}
+              required
             />
 
             <Input
@@ -176,6 +201,7 @@ export default class Home extends React.Component {
               label="Paste your Facebook link"
               disabledValue="https://www.facebook.com/jamppHQ/"
               onChange={this.handleInputChange}
+              required
             />
 
             <Input
@@ -184,6 +210,7 @@ export default class Home extends React.Component {
               label="Paste your LinkedIn link"
               disabledValue="https://www.linkedin.com/company/jampp"
               onChange={this.handleInputChange}
+              required
             />
 
             <Input
@@ -192,6 +219,7 @@ export default class Home extends React.Component {
               label="Paste your Twitter link"
               disabledValue="https://twitter.com/jampp"
               onChange={this.handleInputChange}
+              required
             />
 
             <Input
@@ -200,6 +228,7 @@ export default class Home extends React.Component {
               label="Add a line promoting our awesome company"
               options={lineOptionsInput}
               onChange={this.handleInputChange}
+              required
             />
           </Step>
 

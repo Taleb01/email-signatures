@@ -11,21 +11,12 @@ class Step extends React.Component {
       isValid: false,
     };
 
-    this.handleValidate = this.handleValidate.bind(this);
     this.handlePrev = this.handlePrev.bind(this);
     this.handleNext = this.handleNext.bind(this);
   }
 
   componentWillReceiveProps() {
-    this.handleValidate();
-  }
-
-  handleValidate() {
-    const requiredInputs = this.props.children
-      .filter(input => input.props.required || (input.props.disabledValue !== '' && input.props.value === ''))
-      .map(input => input.props.name);
-
-    this.setState({ isValid: this.props.onValidate(requiredInputs) });
+    this.setState({ isValid: this.props.onValidate(this.props.children) });
   }
 
   handlePrev() {

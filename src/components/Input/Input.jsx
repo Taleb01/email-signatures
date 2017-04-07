@@ -12,6 +12,11 @@ class Input extends React.Component {
     };
 
     this.handleOptionalLabelChange = this.handleOptionalLabelChange.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
+  }
+
+  handleInputChange(event) {
+    this.props.onChange(event, this.props.required);
   }
 
   handleOptionalLabelChange() {
@@ -19,7 +24,7 @@ class Input extends React.Component {
       this.backupText = this.props.value;
     }
 
-    this.props.onChange({
+    this.handleInputChange({
       target: {
         name: this.props.name,
         value: this.state.enabled ? this.props.disabledValue : this.backupText,
@@ -37,7 +42,7 @@ class Input extends React.Component {
         <OptionsInput
           value={this.props.value}
           name={this.props.name}
-          onChange={this.props.onChange}
+          onChange={this.handleInputChange}
           matchOptionToTerm={this.props.options.matchOptionToTerm}
           url={this.props.options.url}
           options={this.props.options.options}
@@ -46,7 +51,7 @@ class Input extends React.Component {
         <TextInput
           value={this.props.value}
           name={this.props.name}
-          onChange={this.props.onChange}
+          onChange={this.handleInputChange}
         />
       );
 
@@ -58,7 +63,9 @@ class Input extends React.Component {
       styles.optionalLabelActive :
       styles.optionalLabel;
 
-    const optionalLabel = !this.props.required ?
+    const requiredLabel = this.props.required ? (<sup><strong>*</strong></sup>) : null;
+
+    const optionalLabel = this.props.disabledValue ?
       (
         <button
           className={optionalLabelStyle}
@@ -68,7 +75,7 @@ class Input extends React.Component {
 
     return (
       <div className={inputContainerStyle}>
-        <label className="label" htmlFor="user">{this.props.label}</label>
+        <label className="label" htmlFor="user">{this.props.label} {requiredLabel}</label>
         <div className={styles.inputWrapper}>
           {input}
           {optionalLabel}
