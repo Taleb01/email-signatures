@@ -3,10 +3,10 @@
 .input-wrapper
   position: relative
 
-.optionalLabel
+.defaultValueButton
   display: block
   cursor: pointer
-  background: $secondary
+  background: $call-out
   width: 20px
   height: 20px
   position: absolute
@@ -21,12 +21,12 @@
     display: block
     width: 12px
     height: 12px
-    background: url(/assets/images/tick.svg) no-repeat center
+    background: url(/assets/images/jampp.svg) no-repeat center
     background-size: contain
 
-.optionalLabelActive
-  composes: optionalLabel
-  background: $call-out-aly
+.defaultValueButtonActive
+  composes: defaultValueButton
+  background: $secondary
 
 .inputContainer
   width: 48%

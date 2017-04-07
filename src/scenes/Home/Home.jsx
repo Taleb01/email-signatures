@@ -125,6 +125,7 @@ export default class Home extends React.Component {
         <Steps
           onChange={this.handleStepChange}
           onValidate={this.handleFormValidate}
+          active={1}
         >
           <Step
             nextButton="What else?"
@@ -199,7 +200,7 @@ export default class Home extends React.Component {
               value={this.state.facebook}
               name="facebook"
               label="Paste your Facebook link"
-              disabledValue="https://www.facebook.com/jamppHQ/"
+              defaultValue="https://www.facebook.com/jamppHQ/"
               onChange={this.handleInputChange}
               required
             />
@@ -208,7 +209,7 @@ export default class Home extends React.Component {
               value={this.state.linkedin}
               name="linkedin"
               label="Paste your LinkedIn link"
-              disabledValue="https://www.linkedin.com/company/jampp"
+              defaultValue="https://www.linkedin.com/company/jampp"
               onChange={this.handleInputChange}
               required
             />
@@ -217,7 +218,7 @@ export default class Home extends React.Component {
               value={this.state.twitter}
               name="twitter"
               label="Paste your Twitter link"
-              disabledValue="https://twitter.com/jampp"
+              defaultValue="https://twitter.com/jampp"
               onChange={this.handleInputChange}
               required
             />

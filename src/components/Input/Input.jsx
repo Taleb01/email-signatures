@@ -21,13 +21,13 @@ class Input extends React.Component {
 
   handleOptionalLabelChange() {
     if (this.state.enabled) {
-      this.backupText = this.props.value;
+      this.backupValue = this.props.value;
     }
 
     this.handleInputChange({
       target: {
         name: this.props.name,
-        value: this.state.enabled ? this.props.disabledValue : this.backupText,
+        value: this.state.enabled ? this.props.defaultValue : this.backupValue,
       },
     });
 
@@ -59,16 +59,16 @@ class Input extends React.Component {
       styles.inputContainer :
       styles.inputContainerDisabled;
 
-    const optionalLabelStyle = this.state.enabled ?
-      styles.optionalLabelActive :
-      styles.optionalLabel;
+    const defaultValueButtonStyle = this.state.enabled ?
+      styles.defaultValueButtonActive :
+      styles.defaultValueButton;
 
     const requiredLabel = this.props.required ? (<sup><strong>*</strong></sup>) : null;
 
-    const optionalLabel = this.props.disabledValue ?
+    const defaultValueButton = this.props.defaultValue ?
       (
         <button
-          className={optionalLabelStyle}
+          className={defaultValueButtonStyle}
           onClick={this.handleOptionalLabelChange}
         ><span /></button>
       ) : null;
@@ -78,7 +78,7 @@ class Input extends React.Component {
         <label className="label" htmlFor="user">{this.props.label} {requiredLabel}</label>
         <div className={styles.inputWrapper}>
           {input}
-          {optionalLabel}
+          {defaultValueButton}
         </div>
       </div>
     );
@@ -91,7 +91,7 @@ Input.propTypes = {
   value: React.PropTypes.string,
   onChange: React.PropTypes.func.isRequired,
   label: React.PropTypes.string.isRequired,
-  disabledValue: React.PropTypes.string,
+  defaultValue: React.PropTypes.string,
   options: React.PropTypes.shape({
     matchOptionToTerm: React.PropTypes.func,
     url: React.PropTypes.string,
@@ -102,7 +102,7 @@ Input.propTypes = {
 Input.defaultProps = {
   required: false,
   value: '',
-  disabledValue: '',
+  defaultValue: '',
   options: {
     matchOptionToTerm: () => {},
     url: '',
