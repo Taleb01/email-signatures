@@ -3,6 +3,7 @@
 .Select {
   .Select-control {
     background: $primary;
+    cursor: pointer;
     width: 100%;
     border: 0;
     border-radius: 3px;

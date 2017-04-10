@@ -7,10 +7,13 @@ class OptionsInput extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      value: '',
-      options: this.props.options,
-    };
+    let value = '';
+
+    if (props.value !== '') {
+      value = props.options.find(option => option.name === props.value);
+    }
+
+    this.state = { value };
 
     this.handleInputSelect = this.handleInputSelect.bind(this);
   }
@@ -26,49 +29,27 @@ class OptionsInput extends React.Component {
     });
   }
 
-  componentDidMount() {
-    
-  }
-
   render() {
-    if (this.props.options.length > 0) {
-      return (
-        <Select
-          name={this.props.name}
-          value={this.state.value}
-          labelKey="name"
-          placeholder=""
-          onChange={this.handleInputSelect}
-          options={this.state.options}
-        />
-      );
-    } else {
-      return (
-        <Select.Async
-          name={this.props.name}
-          value={this.state.value}
-          labelKey="name"
-          placeholder=""
-          onChange={this.handleInputSelect}
-          loadOptions={getOptions}
-        />
-      );
-    }
+    return (
+      <Select
+        name={this.props.name}
+        value={this.state.value}
+        labelKey="name"
+        placeholder=""
+        onChange={this.handleInputSelect}
+        options={this.props.options}
+      />
+    );
   }
 }
 
 OptionsInput.propTypes = {
+  value: React.PropTypes.string.isRequired,
   name: React.PropTypes.string.isRequired,
   onChange: React.PropTypes.func.isRequired,
-  url: React.PropTypes.string,
   options: React.PropTypes.arrayOf(React.PropTypes.shape({
     name: React.PropTypes.string,
-  })),
-};
-
-OptionsInput.defaultProps = {
-  url: '',
-  options: [],
+  })).isRequired,
 };
 
 export default OptionsInput;

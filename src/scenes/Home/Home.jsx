@@ -104,20 +104,14 @@ export default class Home extends React.Component {
   render() {
     const userOptionsInput = {
       options: jamppersList,
-      matchOptionToTerm: (option, value) => option.name.toLowerCase().indexOf(value.toLowerCase())
-      !== -1,
     };
 
     const positionOptionsInput = {
       options: positionsList,
-      matchOptionToTerm: (option, value) => option.name.toLowerCase().indexOf(value.toLowerCase())
-      !== -1,
     };
 
     const lineOptionsInput = {
       options: lineOptionsList,
-      matchOptionToTerm: (option, value) => option.name.toLowerCase().indexOf(value.toLowerCase())
-      !== -1,
     };
 
     return (
@@ -147,7 +141,6 @@ export default class Home extends React.Component {
               label="What are you?"
               options={positionOptionsInput}
               onChange={this.handleInputChange}
-              required
             />
           </Step>
 
@@ -156,7 +149,8 @@ export default class Home extends React.Component {
             nextButton="Shut up and give me my signature"
             text={`Cool <strong>${this.state.name}</strong>! Nice name ;) I did a little research
             <small>(?)</small> and found this info, feel free to edit anything you like.<br>
-            Note that you can uncheck the fields you don’t want to include on your signature.`}
+            Mandatory fields are marked with an asterisk, also note you can press the J button to add
+            Jampp's accounts for Social Media if you don't want to include your own.`}
           >
             <Input
               value={this.state.name}
@@ -171,7 +165,6 @@ export default class Home extends React.Component {
               name="position"
               label="What do you do at Jampp?"
               onChange={this.handleInputChange}
-              required
             />
 
             <Input
@@ -179,7 +172,6 @@ export default class Home extends React.Component {
               name="photo"
               label="Paste a photo link as you wanna look"
               onChange={this.handleInputChange}
-              required
             />
 
             <Input
@@ -236,7 +228,7 @@ export default class Home extends React.Component {
           <Step
             prevButton="Let me fill my data again"
             text="Well, here is the <em>sexiest email signature ever</em><br>
-            Let me walk you through the next steps... it’s really simple:<br>
+            Let me walk you through the next steps... it's really simple:<br>
             <b>1</b>. Select the text and copy it (⌘+C)<br>
             <b>2</b>. <a target='_blank' href='https://mail.google.com/mail/u/0/#settings/general'><u>Click here</u></a><br>
             <b>3</b>. Go to signature and paste (⌘+V)<br>

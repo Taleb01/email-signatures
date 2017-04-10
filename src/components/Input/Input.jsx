@@ -8,7 +8,7 @@ class Input extends React.Component {
     super(props);
 
     this.state = {
-      enabled: true,
+      enabled: this.props.defaultValue === '' || this.props.value !== this.props.defaultValue,
     };
 
     this.handleOptionalLabelChange = this.handleOptionalLabelChange.bind(this);
