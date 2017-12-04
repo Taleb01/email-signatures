@@ -52,7 +52,7 @@ export default class Home extends React.Component {
       2: () => {
         const chosenJampper = jamppersList.find(jampper => jampper.name === this.state.name);
 
-        if (chosenJampper) {
+        if (chosenJampper && chosenJampper.image) {
           this.setState({
             photo: buildPhotoUrl(chosenJampper.image),
           });

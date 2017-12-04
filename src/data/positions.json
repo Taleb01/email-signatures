@@ -1,5 +1,8 @@
 [
   {
+    "name": "Account Manager"
+  },
+  {
     "name": "Campaign Manager"
   },
   {
@@ -85,6 +88,12 @@
   },
   {
     "name": "Tech Lead"
+  },
+  {
+    "name": "DevOps Engineer"
+  },
+  {
+    "name": "Finance Analyst"
   },
   {
     "name": "CTO"

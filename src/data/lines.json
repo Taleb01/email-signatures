@@ -14,9 +14,5 @@
   {
     "name": "Check out our latest tech blog post",
     "value":  "<a href='http://geeks.jampp.com' style='font-weight:bold'>Check out our latest tech blog post</a>"
-  },
-  {
-    "name": "Climbed Everest? Wrestled alligators? Next?? We're hiring!",
-    "value":  "<a href='http://jampp.com/jobs' style='font-weight:bold'>Climbed Everest? Wrestled alligators? Next?? We're hiring!</a>"
   }
 ]

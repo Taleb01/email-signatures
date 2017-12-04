@@ -1,13 +1,5 @@
 [
   {
-    "name": "Andre Brener",
-    "image": "Andre"
-  },
-  {
-    "name": "Angeles Mazzucchelli",
-    "image": "Angie"
-  },
-  {
     "name": "Antonio Affonseca",
     "image": "Antonio"
   },
@@ -28,16 +20,8 @@
     "image": "Quino"
   },
   {
-    "name": "Cecilia Silvano",
-    "image": "Ceci-S"
-  },
-  {
-    "name": "Cecilia Cañizares",
-    "image": "Ceci-C"
-  },
-  {
-    "name": "Chama EL KASRI",
-    "image": "Chama"
+    "name": "Claudio Freire",
+    "image": "Klauss"
   },
   {
     "name": "Chris Blair",
@@ -48,24 +32,24 @@
     "image": "Cristian"
   },
   {
-    "name": "Diego Meller",
-    "image": "Diego"
+    "name": "David Stevens",
+    "image": "David"
   },
   {
-    "name": "Eitan Rosenzvaig",
-    "image": "Eitan"
+    "name": "Diego Meller",
+    "image": "Diego"
   },
   {
     "name": "Emiliano Castagnari",
     "image": "Emi"
   },
   {
-    "name": "Federico Chimento",
-    "image": "FedeC"
-  },
-  {
     "name": "Federico Germino",
     "image": "FedeG"
+  },
+  {
+    "name": "Federico Palladoro",
+    "image": "FedeP"
   },
   {
     "name": "Fernando Otero",
@@ -76,12 +60,20 @@
     "image": "Flor"
   },
   {
+    "name": "Florencia Larroulet",
+    "image": "Flor2"
+  },
+  {
     "name": "Florian Lutz",
     "image": "Florian"
   },
   {
     "name": "Francis Lachica Guini",
     "image": "Francis"
+  },
+  {
+    "name": "Franco Passamonte",
+    "image": "Franco"
   },
   {
     "name": "Horacio Fucaraccio",
@@ -96,44 +88,36 @@
     "image": "Gabi"
   },
   {
-    "name": "Gervasio Calderón",
-    "image": "Gerva"
-  },
-  {
     "name": "Giulia Baiocchi",
     "image": "Giulia"
+  },
+  {
+    "name": "Greg Wang",
+    "image": "Greg"
   },
   {
     "name": "Guido Crego",
     "image": "Guido"
   },
   {
-    "name": "Guillermo Giovagnoli",
-    "image": "Guille"
-  },
-  {
     "name": "Illia Kharytonov",
     "image": "Illia"
+  },
+  {
+    "name": "Io Flament",
+    "image": "Io"
   },
   {
     "name": "Jack Matterson",
     "image": "Jack"
   },
   {
-    "name": "Javier Cáceres",
-    "image": "Javi"
+    "name": "Jing Xu",
+    "image": "Jing"
   },
   {
     "name": "Joana Picq",
     "image": "Joana"
-  },
-  {
-    "name": "João Candeias",
-    "image": "Joao"
-  },
-  {
-    "name": "Joff Hamilton-Dick",
-    "image": "Joff"
   },
   {
     "name": "Jose Navas",
@@ -152,36 +136,40 @@
     "image": "Julia"
   },
   {
-    "name": "Claudio Freire",
-    "image": "Klauss"
-  },
-  {
-    "name": "Leandro Tremari",
-    "image": "Lean-T"
+    "name": "Killian McCabe",
+    "image": "Killian"
   },
   {
     "name": "Leandro Zeballos",
     "image": "Lean"
   },
   {
+    "name": "Leopoldine Metzger",
+    "image": "Leo"
+  },
+  {
     "name": "Luciano Di Pasquale",
     "image": "Lucho"
   },
   {
-    "name": "Macarena Maidana",
-    "image": "Maca"
+    "name": "Luciano Lo Giudice",
+    "image": "LucianoLG"
   },
   {
     "name": "Maite Barreneche",
     "image": "Maite"
   },
   {
+    "name": "Manuel Revel Chion",
+    "image": "ManuelR"
+  },
+  {
     "name": "María Veloso",
     "image": "Maru"
   },
   {
-    "name": "Mariano Basile",
-    "image": "Mariano"
+    "name": "Marilina Ergas",
+    "image": "Mari"
   },
   {
     "name": "Martin Añazco",
@@ -190,6 +178,14 @@
   {
     "name": "Martina Lalanne",
     "image": "Martu"
+  },
+  {
+    "name": "Martin Bonamico",
+    "image": "Martin-B"
+  },
+  {
+    "name": "Mark Ramondt",
+    "image": "Mark"
   },
   {
     "name": "Juan Mateo de Monasterio",
@@ -220,24 +216,16 @@
     "image": "Pablo-D"
   },
   {
-    "name": "Pablo Malet",
-    "image": "Pablo-M"
+    "name": "Pablo Watfi",
+    "image": "PabloW"
   },
   {
     "name": "Pamela Corvino",
     "image": "Pam"
   },
   {
-    "name": "Patricio Rocca Huguet",
-    "image": "Pato"
-  },
-  {
     "name": "Patrick Hubregsen",
     "image": "Patrick"
-  },
-  {
-    "name": "Pedro Beraza",
-    "image": "Pb"
   },
   {
     "name": "Pedro Ferrari",
@@ -248,18 +236,6 @@
     "image": "Philip"
   },
   {
-    "name": "Pablo Lorenzatto",
-    "image": "Pablo-L"
-  },
-  {
-    "name": "Rami Richards",
-    "image": "Rami"
-  },
-  {
-    "name": "Rich Cannon",
-    "image": "Rich"
-  },
-  {
     "name": "Rocio Vivot",
     "image": "Rochi"
   },
@@ -268,12 +244,12 @@
     "image": "Romi"
   },
   {
-    "name": "Santiago Hernandez",
-    "image": "Santi"
+    "name": "Rodrigo Suaya",
+    "image": "Rodrigo"
   },
   {
-    "name": "Sebastian Montini",
-    "image": "Seba"
+    "name": "Santiago Hernandez",
+    "image": "Santi"
   },
   {
     "name": "Sofía Enriquez",
@@ -290,10 +266,6 @@
   {
     "name": "Teresa Fontanella",
     "image": "Tere"
-  },
-  {
-    "name": "Martin Bonamico",
-    "image": "Martin-B"
   },
   {
     "name": "Tomas Zulberti",
@@ -316,11 +288,11 @@
     "image": "Valen"
   },
   {
+    "name": "Victoria Valle",
+    "image": "Vicky"
+  },
+  {
     "name": "Yamila Lede",
     "image": "Yami"
   },
-  {
-    "name": "Zahid Muhammad",
-    "image": ""
-  }
 ]

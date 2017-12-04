@@ -4,10 +4,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: './src/index.html',
   filename: 'index.html',
-  inject: 'body'
+  inject: 'body',
+  hash: true,
 })
 
 module.exports = {
+  devServer: {
+    watchContentBase: true,
+  },
   entry: './src/index.jsx',
   output: {
     path: path.resolve('dist'),
